@@ -15,15 +15,15 @@ var cardValues = [];
  */
 
 MatchGame.generateCardValues = function () {
-
+    console.log(cardValues);
+    cardValues = [];
     var orderedValues = [];
     
     for (var i = 1; i < 9; i++) {
         orderedValues.push(i);
         orderedValues.push(i);
-        console.log(orderedValues);
     }
-
+    
     var a = 0;
     var numberOfCards = orderedValues.length;
     
@@ -32,10 +32,11 @@ MatchGame.generateCardValues = function () {
         cardValues.push(orderedValues[randomIndex]);
         orderedValues.splice(randomIndex, 1);
         a++;
-        
     }
+        console.log(cardValues);
+
+     return cardValues;
     
-    console.log(cardValues);
      // Math.floor(Math.random() * (8 - 1 + 1)) + 1; // You could use Math.round(Math.random() * (max - min)) + min, this however gives a non-even distribution. Both, min and max only have approximately half the chance to roll:
 };
 
@@ -47,18 +48,15 @@ MatchGame.generateCardValues = function () {
 MatchGame.renderCards = function(cardValues, $game) {
     var cardColours = ['hsl(25, 85%, 65%)', 'hsl(55, 85%, 65%)', 'hsl(90, 85%, 65%)', 'hsl(160, 85%, 65%)', 'hsl(220, 85%, 65%)', 'hsl(265, 85%, 65%)', 'hsl(310, 85%, 65%)', 'hsl(360, 85%, 65%)'];
     
-    $('#game').empty();
-    
-    console.log(cardValues);
-    console.log(cardColours);
-    console.log($game);
-    
-    for (var i = 0; i < cardValues.length; i++) {
-        $('<div class="card col-xs-3"></div>').data('value', cardValues[i]);
-        $('<div class="card col-xs-3"></div>').data('flipped', false);
-        $('<div class="card col-xs-3"></div>').data('color', cardColours[i - 1]);
+    $game.empty();
         
-        $game.append('<div class="card col-xs-3"></div>')
+    for (var i = 0; i < cardValues.length; i++) {
+        var $card = $('<div class="card col-xs-3"></div>');
+        $card.data('value', cardValues[i]);
+        $card.data('flipped', false);
+        $card.data('color', cardColours[cardValues[i] - 1]);
+        $game.append($card);
+ 
     }
 };
 /*
