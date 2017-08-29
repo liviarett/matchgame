@@ -15,7 +15,6 @@ var cardValues = [];
  */
 
 MatchGame.generateCardValues = function () {
-    console.log(cardValues);
     cardValues = [];
     var orderedValues = [];
     
@@ -76,7 +75,7 @@ MatchGame.flipCard = function($card, $game) {
     console.log($card.data('value')); //returns correctly
     console.log($card.data('color')); //returns correctly
     
-    if ($card.data('flipped').required) {
+    if ($card.data('flipped')) {
         
         console.log('card already flipped'); //added just to check whether if true can be accessed, and it doesn't seem to be!
         
