@@ -37,7 +37,6 @@ MatchGame.generateCardValues = function () {
 
      return cardValues;
     
-     // Math.floor(Math.random() * (8 - 1 + 1)) + 1; // You could use Math.round(Math.random() * (max - min)) + min, this however gives a non-even distribution. Both, min and max only have approximately half the chance to roll:
 };
 
 /*
@@ -46,6 +45,7 @@ MatchGame.generateCardValues = function () {
 */
 
 MatchGame.renderCards = function(cardValues, $game) {
+    $game.data('flippedCards', []);
     var cardColours = ['hsl(25, 85%, 65%)', 'hsl(55, 85%, 65%)', 'hsl(90, 85%, 65%)', 'hsl(160, 85%, 65%)', 'hsl(220, 85%, 65%)', 'hsl(265, 85%, 65%)', 'hsl(310, 85%, 65%)', 'hsl(360, 85%, 65%)'];
     
     $game.empty();
@@ -56,12 +56,56 @@ MatchGame.renderCards = function(cardValues, $game) {
         $card.data('flipped', false);
         $card.data('color', cardColours[cardValues[i] - 1]);
         $game.append($card);
- 
-    }
+    };
+    
+    $('.card').click(function() {
+        
+        MatchGame.flipCard($(this),$('#game'))
+    });
 };
 /*
   Flips over a given card and checks to see if two cards are flipped over.
   Updates styles on flipped cards depending whether they are a match or not.
  */
+
 MatchGame.flipCard = function($card, $game) {
-};
+    
+    console.log($card.data('value'));
+    console.log($card.data('flipped'));
+    console.log($card.data('color'));
+    
+    var $flippedCards = $game.data('flippedCards', []);
+    
+    if ($card.data('flipped')) {
+        console.log('card already flipped');
+        return
+    } else {
+        $card.data('flipped', true);
+        $card.css('background-color', $card.data('color'));
+        $card.text($card.data('value'));
+        $flippedCards.push($card.data('value'));
+        console.log($card.data('value'));
+        console.log($card.data('flipped'));
+        console.log($card.data('color'));
+        console.log($card.css);
+    };
+    
+    if ($flippedCards.length = 2) {
+        if ($flippedCards[0] === $flippedCards[1]) {
+            $card.backgroundColor = 'rgb(153, 153, 153)';
+            $card.color = 'rgb(204, 204, 204)';
+            $flippedCards.length = 0;
+        } else { 
+            $card.text = "";
+            $card.backgroundColor = 'rgb(32, 64, 86)';
+            $card.data('flipped', false);
+            $flippedCards.length = 0;
+        }
+    } else { 
+        return;
+    };
+    
+    console.log('$card ' + $card);
+    console.log('Flipped cards after last if ' + $flippedCards);
+    
+    };
