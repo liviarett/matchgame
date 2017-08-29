@@ -69,26 +69,28 @@ MatchGame.renderCards = function(cardValues, $game) {
  */
 
 MatchGame.flipCard = function($card, $game) {
-    
-    console.log($card.data('value'));
-    console.log($card.data('flipped'));
-    console.log($card.data('color'));
-    
+   
     var $flippedCards = $game.data('flippedCards', []);
     
-    if ($card.data('flipped')) {
-        console.log('card already flipped');
+    console.log($card.data('flipped')); //returns false at the first click, true at second click
+    console.log($card.data('value')); //returns correctly
+    console.log($card.data('color')); //returns correctly
+    
+    if ($card.data('flipped').required) {
+        
+        console.log('card already flipped'); //added just to check whether if true can be accessed, and it doesn't seem to be!
+        
         return
+        
     } else {
+        
         $card.data('flipped', true);
         $card.css('background-color', $card.data('color'));
         $card.text($card.data('value'));
         $flippedCards.push($card.data('value'));
-        console.log($card.data('value'));
-        console.log($card.data('flipped'));
-        console.log($card.data('color'));
-        console.log($card.css);
     };
+    
+    console.log($card.data('flipped')); //always returns true
     
     if ($flippedCards.length = 2) {
         if ($flippedCards[0] === $flippedCards[1]) {
@@ -105,7 +107,6 @@ MatchGame.flipCard = function($card, $game) {
         return;
     };
     
-    console.log('$card ' + $card);
     console.log('Flipped cards after last if ' + $flippedCards);
     
     };
