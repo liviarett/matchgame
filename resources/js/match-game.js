@@ -23,16 +23,11 @@ MatchGame.generateCardValues = function () {
         orderedValues.push(i);
     }
     
-    var a = 0;
-    var numberOfCards = orderedValues.length;
-    
-    while (a < numberOfCards) {
+    while (orderedValues.length > 0) {
         var randomIndex = Math.floor(Math.random() * orderedValues.length);
-        cardValues.push(orderedValues[randomIndex]);
+       cardValues.push(orderedValues[randomIndex]);
         orderedValues.splice(randomIndex, 1);
-        a++;
     }
-        console.log(cardValues);
 
      return cardValues;
     
@@ -44,22 +39,32 @@ MatchGame.generateCardValues = function () {
 */
 
 MatchGame.renderCards = function(cardValues, $game) {
-    $game.data('flippedCards', []);
-    var cardColours = ['hsl(25, 85%, 65%)', 'hsl(55, 85%, 65%)', 'hsl(90, 85%, 65%)', 'hsl(160, 85%, 65%)', 'hsl(220, 85%, 65%)', 'hsl(265, 85%, 65%)', 'hsl(310, 85%, 65%)', 'hsl(360, 85%, 65%)'];
+    var cardColours = [
+        'hsl(25, 85%, 65%)', 
+        'hsl(55, 85%, 65%)', 
+        'hsl(90, 85%, 65%)', 
+        'hsl(160, 85%, 65%)', 
+        'hsl(220, 85%, 65%)', 
+        'hsl(265, 85%, 65%)', 
+        'hsl(310, 85%, 65%)', 
+        'hsl(360, 85%, 65%)'];
     
     $game.empty();
-        
+    $game.data('flippedCards', []);
+
     for (var i = 0; i < cardValues.length; i++) {
         var $card = $('<div class="card col-xs-3"></div>');
         $card.data('value', cardValues[i]);
         $card.data('flipped', false);
         $card.data('color', cardColours[cardValues[i] - 1]);
+        /*$card.css('background-image', 'url(../Images/metrogrey.jpg)');
+        $card.css('background-size', '95%');
+        $card.css('background-position', Math.floor(Math.random() * (1000 - 10 + 1)) + 10) + 'px';*/
         $game.append($card);
     };
     
     $('.card').click(function() {
-        
-        MatchGame.flipCard($(this),$('#game'))
+     MatchGame.flipCard($(this),$('#game'))
     });
 };
 /*
@@ -71,27 +76,31 @@ MatchGame.flipCard = function($card, $game) {
    
     var $flippedCards = $game.data('flippedCards', []);
     
-    console.log($card.data('flipped')); //returns false at the first click, true at second click
-    console.log($card.data('value')); //returns correctly
-    console.log($card.data('color')); //returns correctly
+    console.log($card.data('flipped')); 
+    console.log($card.data('value')); 
+    console.log($card.data('color')); 
     
     if ($card.data('flipped')) {
         
-        console.log('card already flipped'); //added just to check whether if true can be accessed, and it doesn't seem to be!
-        
-        return
+        console.log('card already flipped'); 
+        console.log($flippedCards);
+        return;
         
     } else {
         
         $card.data('flipped', true);
         $card.css('background-color', $card.data('color'));
         $card.text($card.data('value'));
+        $card.css('background-image', null);
         $flippedCards.push($card.data('value'));
+        
+        console.log($flippedCards);
+
     };
-    
-    console.log($card.data('flipped')); //always returns true
-    
-    if ($flippedCards.length = 2) {
+        
+    if ($flippedCards.length === 2) {
+        
+        
         if ($flippedCards[0] === $flippedCards[1]) {
             $card.backgroundColor = 'rgb(153, 153, 153)';
             $card.color = 'rgb(204, 204, 204)';
