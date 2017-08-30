@@ -124,7 +124,6 @@ MatchGame.flipCard = function($card, $game) {
             $flippedCards.length = 0;
             $allFlipped.push(1);
             }, 350);
-
          } else { 
             setTimeout(function() {
             $card1.text('');
@@ -135,7 +134,6 @@ MatchGame.flipCard = function($card, $game) {
             $card2.data('flipped', false);
             $flippedCards.length = 0;
             }, 600);
-        };
     } else { 
         return;
     };
