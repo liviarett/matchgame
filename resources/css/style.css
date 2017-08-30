@@ -10,6 +10,7 @@ html, body {
 
 body {
     padding-top: 2rem;
+    height: 100%;
 }
 h1 {
     font-size: 2.5rem;
@@ -60,8 +61,8 @@ p {
     right: 0;
     bottom: 0;
     left: 0;
+    height: 100%;
     z-index: 9999; /* or maybe higher */
-
     background-color: transparent;
 }
 
