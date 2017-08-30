@@ -54,6 +54,8 @@ p {
     background-size: 95%;
 }
 
-.no-img-background {
-    
+@media (max-width: 750px) {
+    .card {
+        height: 8rem;
+    }
 }
