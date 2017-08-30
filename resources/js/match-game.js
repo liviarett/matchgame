@@ -136,8 +136,7 @@ MatchGame.flipCard = function($card, $game) {
             $flippedCards.length = 0;
             }, 600);
             $('.noclick').remove();
-    });
-        }
+        };
     } else { 
         return;
     };
