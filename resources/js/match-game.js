@@ -114,6 +114,7 @@ MatchGame.flipCard = function($card, $game) {
         var $card2 = $flippedCards[1];
         
         if ($card1.data('value') === $card2.data('value')) {
+            $('#game').css('pointer-events', 'none');
             setTimeout(function() {
                 $card1.css('background-color', 'rgb(153, 153, 153)');
             $card2.css('background-color', 'rgb(153, 153, 153)');
@@ -122,7 +123,9 @@ MatchGame.flipCard = function($card, $game) {
             $flippedCards.length = 0;
             $allFlipped.push(1);
             }, 350);
+            $('#game').css('pointer-events', 'auto');
         } else { 
+            $('#game').css('pointer-events', 'none');
             setTimeout(function() {
             $card1.text('');
             $card2.text('');
@@ -132,6 +135,7 @@ MatchGame.flipCard = function($card, $game) {
             $card2.data('flipped', false);
             $flippedCards.length = 0;
             }, 600);
+            $('#game').css('pointer-events', 'auto');
         }
     } else { 
         return;
