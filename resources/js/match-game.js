@@ -1,7 +1,5 @@
 // Indicate that the user won when all pairs have been found
 /* Add a "Restart Game" button
-Only allow two cards to be visible at a time (currently the setTimeout allows users to click really quickly and see a few)
-Change card values to non-number values
 Add score or time
 Allow user to select from multiple board sizes
 Add sound effects
@@ -10,7 +8,14 @@ Add flipping animations */
 $(document).ready(function() {
     MatchGame.generateCardValues();
     MatchGame.renderCards(cardValues, $('#game'));
-});
+    
+    $('.playagain').click(function() {
+    MatchGame.generateCardValues();
+    MatchGame.renderCards(cardValues, $('#game')); 
+    $('.playagain').css('visibility', 'hidden');
+    $('.playvideo').css('visibility', 'hidden');
+    });
+    });
 
 var MatchGame = {};
 var cardValues = [];
@@ -38,7 +43,6 @@ MatchGame.generateCardValues = function () {
        cardValues.push(orderedValues[randomIndex]);
         orderedValues.splice(randomIndex, 1);
     }
-console.log(cardValues);
      return cardValues;
     
 };
@@ -94,21 +98,21 @@ MatchGame.flipCard = function($card, $game) {
         $card.data('flipped', true);
         $card.removeClass('img-background');
         if ($card.data('value') === 1) {
-            $card.html('<img class="value1" src="resources/Images/value1.jpg" />');
+            $card.html('<img class="imgvalue" src="resources/Images/value1.jpg" />');
         } else if ($card.data('value') === 2) {
-            $card.html('<img class="value2" src="resources/Images/value2.jpg" />');
+            $card.html('<img class="imgvalue" src="resources/Images/value2.jpg" />');
         } else if ($card.data('value') === 3) {
-            $card.html('<img class="value3" src="resources/Images/value3.jpg" />');
+            $card.html('<img class="imgvalue" src="resources/Images/value3.jpg" />');
         } else if ($card.data('value') === 4) {
-            $card.html('<img class="value4" src="resources/Images/value4.jpg" />');
+            $card.html('<img class="imgvalue" src="resources/Images/value4.jpg" />');
         } else if ($card.data('value') === 5) {
-            $card.html('<img class="value5" src="resources/Images/value5.jpg" />');
+            $card.html('<img class="imgvalue" src="resources/Images/value5.jpg" />');
         } else if ($card.data('value') === 6) {
-            $card.html('<img class="value6" src="resources/Images/value6.jpg" />');
+            $card.html('<img class="imgvalue" src="resources/Images/value6.jpg" />');
         } else if ($card.data('value') === 7) {
-            $card.html('<img class="value7" src="resources/Images/value7.jpg" />');
+            $card.html('<img class="imgvalue" src="resources/Images/value7.jpg" />');
         } else if ($card.data('value') === 8) {
-            $card.html('<img class="value8" src="resources/Images/value8.jpg" />');
+            $card.html('<img class="imgvalue" src="resources/Images/value8.jpg" />');
         };
         //$card.css('background-color', $card.data('color'));
         //$card.text($card.data('value'));
@@ -121,10 +125,6 @@ MatchGame.flipCard = function($card, $game) {
         if ($card1.data('value') === $card2.data('value')) {
             $('#game').append('<div class="noclick"></div>');
             setTimeout(function() {
-            $card1.css('background-color', 'rgb(153, 153, 153)');
-            $card2.css('background-color', 'rgb(153, 153, 153)');
-            $card1.css('color', 'rgb(204, 204, 204)');
-            $card2.css('color', 'rgb(204, 204, 204)');
             $flippedCards.length = 0;
             $allFlipped.push(1);
             }, 350);
@@ -153,8 +153,8 @@ MatchGame.flipCard = function($card, $game) {
     
     if ($allFlipped.length === 7) {
         $allFlipped.length = 0;
-        MatchGame.generateCardValues();
-        MatchGame.renderCards(cardValues, $('#game'));
+        $('.playagain').css('visibility', 'visible');
+        $('.playvideo').css('visibility', 'visible');
        } else {
             return;
         };
