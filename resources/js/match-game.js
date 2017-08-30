@@ -73,7 +73,7 @@ MatchGame.renderCards = function(cardValues, $game) {
         $game.append($card);
     };
     
-    $('.card').click(function() {
+    $('.card').on('click',function() {
      MatchGame.flipCard($(this),$('#game'))
     });
 };
@@ -114,18 +114,20 @@ MatchGame.flipCard = function($card, $game) {
         var $card2 = $flippedCards[1];
         
         if ($card1.data('value') === $card2.data('value')) {
-            $('#game').css('pointer-events', 'none');
+            $('.card').off('click');
             setTimeout(function() {
-                $card1.css('background-color', 'rgb(153, 153, 153)');
+            $card1.css('background-color', 'rgb(153, 153, 153)');
             $card2.css('background-color', 'rgb(153, 153, 153)');
             $card1.css('color', 'rgb(204, 204, 204)');
             $card2.css('color', 'rgb(204, 204, 204)');
             $flippedCards.length = 0;
             $allFlipped.push(1);
             }, 350);
-            $('#game').css('pointer-events', 'auto');
+            $('.card').on('click',function() {
+                 MatchGame.flipCard($(this),$('#game'))
+    });
         } else { 
-            $('#game').css('pointer-events', 'none');
+            $('.card').off('click');
             setTimeout(function() {
             $card1.text('');
             $card2.text('');
@@ -135,7 +137,9 @@ MatchGame.flipCard = function($card, $game) {
             $card2.data('flipped', false);
             $flippedCards.length = 0;
             }, 600);
-            $('#game').css('pointer-events', 'auto');
+            $('.card').on('click',function() {
+                 MatchGame.flipCard($(this),$('#game'))
+    });
         }
     } else { 
         return;
