@@ -145,3 +145,4 @@ MatchGame.flipCard = function($card, $game) {
             return;
         };
     };
+    
