@@ -112,9 +112,10 @@ MatchGame.flipCard = function($card, $game) {
     if ($flippedCards.length === 2) {
         var $card1 = $flippedCards[0];
         var $card2 = $flippedCards[1];
-        
+        $('.card').on('click',function() {
+                return;
+            };
         if ($card1.data('value') === $card2.data('value')) {
-            $('body').append('<div class="noclick"></div>');
             setTimeout(function() {
             $card1.css('background-color', 'rgb(153, 153, 153)');
             $card2.css('background-color', 'rgb(153, 153, 153)');
@@ -123,9 +124,8 @@ MatchGame.flipCard = function($card, $game) {
             $flippedCards.length = 0;
             $allFlipped.push(1);
             }, 350);
-            $('.noclick').remove();
+
          } else { 
-            $('body').append('<div id="noclick" class="noclick"></div>');
             setTimeout(function() {
             $card1.text('');
             $card2.text('');
@@ -135,7 +135,6 @@ MatchGame.flipCard = function($card, $game) {
             $card2.data('flipped', false);
             $flippedCards.length = 0;
             }, 600);
-            $('.noclick').remove();
         };
     } else { 
         return;
