@@ -114,7 +114,7 @@ MatchGame.flipCard = function($card, $game) {
         var $card2 = $flippedCards[1];
         
         if ($card1.data('value') === $card2.data('value')) {
-            $('.card').off('click');
+            $('body').append('<div class="noclick"></div>');
             setTimeout(function() {
             $card1.css('background-color', 'rgb(153, 153, 153)');
             $card2.css('background-color', 'rgb(153, 153, 153)');
@@ -123,11 +123,9 @@ MatchGame.flipCard = function($card, $game) {
             $flippedCards.length = 0;
             $allFlipped.push(1);
             }, 350);
-            $('.card').on('click',function() {
-                 MatchGame.flipCard($(this),$('#game'))
-    });
-        } else { 
-            $('.card').off('click');
+            $('.noclick').remove();
+         } else { 
+            $('body').append('<div id="noclick" class="noclick"></div>');
             setTimeout(function() {
             $card1.text('');
             $card2.text('');
@@ -137,8 +135,7 @@ MatchGame.flipCard = function($card, $game) {
             $card2.data('flipped', false);
             $flippedCards.length = 0;
             }, 600);
-            $('.card').on('click',function() {
-                 MatchGame.flipCard($(this),$('#game'))
+            $('.noclick').remove();
     });
         }
     } else { 
