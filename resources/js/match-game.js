@@ -68,7 +68,7 @@ MatchGame.renderCards = function(cardValues, $game) {
         $card.data('flipped', false);
         $card.data('color', cardColours[cardValues[i] - 1]);
         $card.addClass('img-background');
-        $card.css('background-position', Math.floor(Math.random() * (1000 - 10 + 1) + 10) + 'px');
+        $card.css('background-position', Math.floor(Math.random() * (600 - 10 + 1) + 10) + 'px');
         $game.append($card);
     };
     
@@ -93,9 +93,25 @@ MatchGame.flipCard = function($card, $game) {
         //if card not flipped, flip
         $card.data('flipped', true);
         $card.removeClass('img-background');
-        $card.css('background-color', $card.data('color'));
-        $card.text($card.data('value'));
-        $card.css('background-image', null);
+        if ($card.data('value') === 1) {
+            $card.html('<img class="value1" src="resources/Images/value1.jpg" />');
+        } else if ($card.data('value') === 2) {
+            $card.html('<img class="value2" src="resources/Images/value2.jpg" />');
+        } else if ($card.data('value') === 3) {
+            $card.html('<img class="value3" src="resources/Images/value3.jpg" />');
+        } else if ($card.data('value') === 4) {
+            $card.html('<img class="value4" src="resources/Images/value4.jpg" />');
+        } else if ($card.data('value') === 5) {
+            $card.html('<img class="value5" src="resources/Images/value5.jpg" />');
+        } else if ($card.data('value') === 6) {
+            $card.html('<img class="value6" src="resources/Images/value6.jpg" />');
+        } else if ($card.data('value') === 7) {
+            $card.html('<img class="value7" src="resources/Images/value7.jpg" />');
+        } else if ($card.data('value') === 8) {
+            $card.html('<img class="value8" src="resources/Images/value8.jpg" />');
+        };
+        //$card.css('background-color', $card.data('color'));
+        //$card.text($card.data('value'));
         $flippedCards.push($card);
     };
         

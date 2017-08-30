@@ -48,11 +48,12 @@ p {
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    overflow: hidden;
 }
 
 .img-background {
-    background-image: url(../Images/metrogrey.jpg);
-    background-size: 95%;
+    background-image: url(../Images/spiritpattern2.jpg);
+    background-size: 200%;
 }
 
 .noclick {
@@ -64,6 +65,10 @@ p {
     height: 100%;
     z-index: 9999; /* or maybe higher */
     background-color: transparent;
+}
+
+img.value1, img.value2, img.value3, img.value4, img.value5, img.value6, img.value7, img.value8 {
+    width: 100%;
 }
 
 @media (max-width: 750px) {
