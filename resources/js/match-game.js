@@ -114,7 +114,7 @@ MatchGame.flipCard = function($card, $game) {
         var $card2 = $flippedCards[1];
         $('.card').on('click',function() {
                 return;
-            };
+            });
         if ($card1.data('value') === $card2.data('value')) {
             setTimeout(function() {
             $card1.css('background-color', 'rgb(153, 153, 153)');
