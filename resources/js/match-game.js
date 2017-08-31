@@ -14,6 +14,10 @@ $(document).ready(function() {
     MatchGame.renderCards(cardValues, $('#game')); 
     $('.playagain').css('visibility', 'hidden');
     $('.playvideo').css('visibility', 'hidden');
+        
+    if ($(window).width() <= 750){	
+        $('.playagain').css('display', 'none');
+        $('.playvideo').css('display', 'none');	}
     });
     });
 
