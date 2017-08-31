@@ -154,14 +154,9 @@ a:hover {
         padding: 1% 1%;
 }
     .noclick {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
     height: 150%;
-    background-color: black;
 }
+    
     .card {
         height: 8rem;
         font-size: 4rem;
