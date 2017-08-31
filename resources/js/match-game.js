@@ -9,29 +9,30 @@ $(document).ready(function() {
     MatchGame.generateCardValues();
     MatchGame.renderCards(cardValues, $('#game'));
     
+    if ($(window).width() <= 750){	
+        $('.playagain').css('display', 'none');
+        $('.playvideo').css('display', 'none');	}
+
+// CLICK FUNCTIONS
+
     $('.playagain').click(function() {
     MatchGame.generateCardValues();
     MatchGame.renderCards(cardValues, $('#game')); 
     $('.playagain').css('visibility', 'hidden');
     $('.playvideo').css('visibility', 'hidden');
-        
-    if ($(window).width() <= 750){	
-        $('.playagain').css('display', 'none');
-        $('.playvideo').css('display', 'none');	}
+    });
+
+    $('.playvideo').click(function() {
+    $('iframe').fadeIn(500);
+    $('.closevideo').fadeIn(500);
+    $('.closevideo').css('display', 'flex');
     });
     
-    /*$('.playvideo').click(function() {
-        $('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
-		disableOn: 700,
-		type: 'iframe',
-		mainClass: 'mfp-fade',
-		removalDelay: 160,
-		preloader: false,
-
-		fixedContentPos: false
-        });
-	});*/
-    
+    $('.closevideo').click(function() {
+    $('iframe').attr('src', $('iframe').attr('src'));        
+    $('iframe').css('display', 'none');
+    $('.closevideo').css('display', 'none');
+    });
     });
 
 var MatchGame = {};

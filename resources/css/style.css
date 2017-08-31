@@ -1,8 +1,7 @@
 /* UNIVERSAL STYLES */
 html, body {
     font-size: 14px;
-    font-family: 'Work Sans', sans-serif;
-    background-color: rgb(255, 247, 189);
+    font-family: 'Raleway', sans-serif;
     background-image: url(../Images/spiritpatternbackground.jpg);
     background-size: 10%;
     padding: 0;
@@ -15,13 +14,19 @@ body {
 }
 h1 {
     font-size: 2.5rem;
-    font-weight: bold;
+    font-weight: 900;
+    color: rgb(255, 100, 120);
+}
+
+h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
     color: rgb(255, 100, 120);
 }
 
 h4 {
     font-size: 1rem;
-    font-weight: bold;
+    font-weight: 600;
     color: rgb(255, 100, 120);
     padding: 1% 0;
 }
@@ -51,7 +56,7 @@ a:hover {
 .heading {
     text-align: center;
     width: 20%;
-    padding: 0 1%;
+    padding: 0 0 0 2%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -73,7 +78,7 @@ a:hover {
     bottom: 0;
     left: 0;
     height: 100%;
-    z-index: 9999; /* or maybe higher */
+    z-index: 9000; /* or maybe higher */
     background-color: transparent;
 }
 
@@ -122,16 +127,58 @@ a:hover {
     letter-spacing: 0.08rem;
     cursor: pointer;
     visibility: hidden;
+    border: 2px solid rgba(255, 255, 255,0.5);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
 }
 
+.playagain:hover {
+    background-color: rgb(230, 120, 120);
+}
 
 .playagain:active {
-    background-color: rgb(220, 100, 120);
+    background-color: rgb(210, 100, 100);
 }
 
 .playvideo {
-    visibility: hidden;
+    cursor: pointer;
 }
+
+
+iframe {
+    width: 80%;
+    height: 90%;
+    left: 10%;
+    top: auto;
+    position: fixed;
+    align-self: center;
+    z-index: 1000;
+    margin: auto;
+    display: none;
+}
+
+.closevideo {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 20px;
+    background-color: rgb(160, 160, 160);
+    position: fixed;
+    z-index: 1000;
+    top: 1%;
+    left: 90%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    border: 1px solid white;
+    cursor: pointer;
+    display: none;
+}
+
+.closevideo:hover {
+    background-color: rgb(100, 100, 100);    
+};
 
 @media (max-width: 750px) {
     .main-container {
@@ -169,40 +216,10 @@ a:hover {
     background-size: 90%;
 }
     .playvideo {
-        visibility: visible;
-        display: none;
+    cursor: pointer;
     }
+    
     .playagain {
     visibility: visible;
-        display: none;
-}
-}
-
-/**
- * Simple fade transition,
- */
-.mfp-fade.mfp-bg {
-	opacity: 0;
-	-webkit-transition: all 0.15s ease-out; 
-	-moz-transition: all 0.15s ease-out; 
-	transition: all 0.15s ease-out;
-}
-.mfp-fade.mfp-bg.mfp-ready {
-	opacity: 0.8;
-}
-.mfp-fade.mfp-bg.mfp-removing {
-	opacity: 0;
-}
-
-.mfp-fade.mfp-wrap .mfp-content {
-	opacity: 0;
-	-webkit-transition: all 0.15s ease-out; 
-	-moz-transition: all 0.15s ease-out; 
-	transition: all 0.15s ease-out;
-}
-.mfp-fade.mfp-wrap.mfp-ready .mfp-content {
-	opacity: 1;
-}
-.mfp-fade.mfp-wrap.mfp-removing .mfp-content {
-	opacity: 0;
+    display: none;
 }
