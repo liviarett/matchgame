@@ -19,6 +19,19 @@ $(document).ready(function() {
         $('.playagain').css('display', 'none');
         $('.playvideo').css('display', 'none');	}
     });
+    
+    /*$('.playvideo').click(function() {
+        $('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
+		disableOn: 700,
+		type: 'iframe',
+		mainClass: 'mfp-fade',
+		removalDelay: 160,
+		preloader: false,
+
+		fixedContentPos: false
+        });
+	});*/
+    
     });
 
 var MatchGame = {};
