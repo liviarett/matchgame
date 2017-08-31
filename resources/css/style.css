@@ -3,6 +3,8 @@ html, body {
     font-size: 14px;
     font-family: 'Work Sans', sans-serif;
     background-color: rgb(255, 247, 189);
+    background-image: url(../Images/spiritpatternbackground.jpg);
+    background-size: 10%;
     padding: 0;
     margin: 0;
     box-sizing: content-box;
@@ -97,7 +99,7 @@ a:hover {
 
 .img-background {
     background-image: url(../Images/spiritpattern.jpg);
-    background-size: 70%;
+    background-size: 50%;
 }
 
 .imgvalue {
@@ -174,4 +176,33 @@ a:hover {
     visibility: visible;
         display: none;
 }
+}
+
+/**
+ * Simple fade transition,
+ */
+.mfp-fade.mfp-bg {
+	opacity: 0;
+	-webkit-transition: all 0.15s ease-out; 
+	-moz-transition: all 0.15s ease-out; 
+	transition: all 0.15s ease-out;
+}
+.mfp-fade.mfp-bg.mfp-ready {
+	opacity: 0.8;
+}
+.mfp-fade.mfp-bg.mfp-removing {
+	opacity: 0;
+}
+
+.mfp-fade.mfp-wrap .mfp-content {
+	opacity: 0;
+	-webkit-transition: all 0.15s ease-out; 
+	-moz-transition: all 0.15s ease-out; 
+	transition: all 0.15s ease-out;
+}
+.mfp-fade.mfp-wrap.mfp-ready .mfp-content {
+	opacity: 1;
+}
+.mfp-fade.mfp-wrap.mfp-removing .mfp-content {
+	opacity: 0;
 }
