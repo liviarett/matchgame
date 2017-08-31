@@ -178,7 +178,7 @@ iframe {
 
 .closevideo:hover {
     background-color: rgb(100, 100, 100);    
-};
+}
 
 @media (max-width: 750px) {
     .main-container {
@@ -222,4 +222,5 @@ iframe {
     .playagain {
     visibility: visible;
     display: none;
+}
 }
