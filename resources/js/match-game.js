@@ -8,30 +8,37 @@ Add flipping animations */
 $(document).ready(function() {
     MatchGame.generateCardValues();
     MatchGame.renderCards(cardValues, $('#game'));
-    
-    if ($(window).width() <= 750){	
-        $('.playagain').css('display', 'none');
-        $('.playvideo').css('display', 'none');	}
 
 // CLICK FUNCTIONS
 
     $('.playagain').click(function() {
     MatchGame.generateCardValues();
     MatchGame.renderCards(cardValues, $('#game')); 
-    $('.playagain').css('visibility', 'hidden');
-    $('.playvideo').css('visibility', 'hidden');
+    $('.playagain').css('visibility', 'hidden');        
+        if ($(window).width() <= 750){	
+    $('.playagain').css('display', 'none');
+    $('.playvideo').css('display', 'none');	}
     });
 
     $('.playvideo').click(function() {
+        if ($(window).width() <= 900){
+     window.open("https://www.youtube.com/embed/LQJyBnJzCEw?autoplay=1","_blank")
+    } else {
     $('iframe').fadeIn(500);
     $('.closevideo').fadeIn(500);
+    $('.whitescreen').fadeIn(500);
     $('.closevideo').css('display', 'flex');
+    $('.whitescreen').css('display', 'flex')    
+    $('iframe').attr('src', 'https://www.youtube.com/embed/LQJyBnJzCEw?autoplay=1');    
+    }
     });
     
     $('.closevideo').click(function() {
     $('iframe').attr('src', $('iframe').attr('src'));        
     $('iframe').css('display', 'none');
     $('.closevideo').css('display', 'none');
+    $('.whitescreen').css('display', 'none');
+    $('iframe').attr('src', 'https://www.youtube.com/embed/LQJyBnJzCEw?autoplay=0');    
     });
     });
 
