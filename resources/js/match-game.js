@@ -155,6 +155,8 @@ MatchGame.flipCard = function($card, $game) {
         $allFlipped.length = 0;
         $('.playagain').css('visibility', 'visible');
         $('.playvideo').css('visibility', 'visible');
+        $('.playagain').css('display', 'block');
+        $('.playvideo').css('display', 'block');
        } else {
             return;
         };
