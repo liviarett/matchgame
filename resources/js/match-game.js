@@ -14,7 +14,9 @@ $(document).ready(function() {
     $('.playagain').click(function() {
     MatchGame.generateCardValues();
     MatchGame.renderCards(cardValues, $('#game')); 
-    $('.playagain').css('visibility', 'hidden');        
+    $('.playagain').css('visibility', 'hidden');
+        clicks = 0;
+        $('.score').text('Score: ' + clicks)
         if ($(window).width() <= 750){	
     $('.playagain').css('display', 'none');
     $('.playvideo').css('display', 'none');	}
@@ -45,6 +47,8 @@ $(document).ready(function() {
 var MatchGame = {};
 var cardValues = [];
 var $allFlipped = [];
+var clicks = 0;
+
 /*
   Sets up a new game after HTML document has loaded.
   Renders a 4x4 board of cards.
@@ -145,6 +149,8 @@ MatchGame.flipCard = function($card, $game) {
     };
         
     if ($flippedCards.length === 2) {
+        clicks = clicks + 1;
+        $('.score').text('Score: ' + clicks); 
         var $card1 = $flippedCards[0];
         var $card2 = $flippedCards[1];
         if ($card1.data('value') === $card2.data('value')) {
