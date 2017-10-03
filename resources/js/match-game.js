@@ -12,6 +12,7 @@ $(document).ready(function() {
 // CLICK FUNCTIONS
 
     $('.playagain').click(function() {
+		$allFlipped = [];
     MatchGame.generateCardValues();
     MatchGame.renderCards(cardValues, $('#game')); 
     $('.playagain').css('visibility', 'hidden');
@@ -150,6 +151,9 @@ MatchGame.flipCard = function($card, $game) {
         
     if ($flippedCards.length === 2) {
         clicks = clicks + 1;
+		console.log(`clicks: ${clicks}`);
+		console.log(`flipped: ${$allFlipped}`);
+		console.log(`flipped length: ${$allFlipped.length}`);
         $('.score').text('Score: ' + clicks); 
         var $card1 = $flippedCards[0];
         var $card2 = $flippedCards[1];
@@ -185,7 +189,6 @@ MatchGame.flipCard = function($card, $game) {
     
     
     if ($allFlipped.length === 7) {
-        $allFlipped.length = 0;
         $('.playagain').css('visibility', 'visible');
         $('.playvideo').css('visibility', 'visible');
         $('.playagain').css('display', 'block');
