@@ -164,18 +164,20 @@ MatchGame.flipCard = function($card, $game) {
             }, 350);
          } else { 
             $('#game').append('<div class="noclick"></div>'); 
-            setTimeout(function() {
-            $card1.text('');
-            $card2.text('');
-            $card1.addClass('img-background');
-            $card2.addClass('img-background');
-            $card1.data('flipped', false);
-            $card2.data('flipped', false);
-            $flippedCards.length = 0;
-            }, 600);
-            setTimeout(function() {
-            $('.noclick').remove();
-            }, 600);
+				$card2.waitForImages(function() {
+					setTimeout(function() {
+					$card1.text('');
+					$card2.text('');
+					$card1.addClass('img-background');
+					$card2.addClass('img-background');
+					$card1.data('flipped', false);
+					$card2.data('flipped', false);
+					$flippedCards.length = 0;
+					}, 600);
+					setTimeout(function() {
+					$('.noclick').remove();
+					}, 600);
+				});
     }
     } else { 
         return;
