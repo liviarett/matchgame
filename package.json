@@ -1,6 +1,12 @@
 {
   "name": "matchgame",
   "version": "1.0.0",
+  "devDependencies": {
+    "gulp": "*",
+    "browser-sync": "^2.14.0",
+    "gulp-watch": "*",
+    "path": "*"
+  },
   "description": "match game faap moda",
   "main": "correctcode.js",
   "scripts": {
