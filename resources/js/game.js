@@ -86,14 +86,12 @@ MatchGame.flipCard = function($card, $game) {
 
     if ($flippedCards.length === 2) {
         clicks = clicks + 1;
-		console.log(`clicks: ${clicks}`);
-		console.log(`flipped: ${$allFlipped}`);
-		console.log(`flipped length: ${$allFlipped.length}`);
         $('.score').text('Score: ' + clicks);
         var $card1 = $flippedCards[0];
         var $card2 = $flippedCards[1];
         if ($card1.data('value') === $card2.data('value')) {
             $('#game').append('<div class="noclick"></div>');
+            $('.noclick').css('height', $('body').css('height'));
             setTimeout(function() {
             $flippedCards.length = 0;
             $allFlipped.push(1);
@@ -102,8 +100,9 @@ MatchGame.flipCard = function($card, $game) {
                 $('.noclick').remove();
             }, 350);
          } else {
-            $('#game').append('<div class="noclick"></div>');
-				$card2.waitForImages(function() {
+          $('#game').append('<div class="noclick"></div>');
+          $('div.noclick').css('height', $('#game').css('height'));
+			    $card2.waitForImages(function() {
 					setTimeout(function() {
 					$card1.text('');
 					$card2.text('');
@@ -114,7 +113,7 @@ MatchGame.flipCard = function($card, $game) {
 					$flippedCards.length = 0;
 					}, 600);
 					setTimeout(function() {
-					$('.noclick').remove();
+					$('div.noclick').remove();
 					}, 600);
 				});
     }
