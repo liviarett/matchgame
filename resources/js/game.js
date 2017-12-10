@@ -89,9 +89,9 @@ MatchGame.flipCard = function($card, $game) {
         $('.score').text('Score: ' + clicks);
         var $card1 = $flippedCards[0];
         var $card2 = $flippedCards[1];
+        $('#game').append('<div class="noclick"></div>');
+        $('div.noclick').css('height', $('body').css('height'));
         if ($card1.data('value') === $card2.data('value')) {
-            $('#game').append('<div class="noclick"></div>');
-            $('.noclick').css('height', $('body').css('height'));
             setTimeout(function() {
             $flippedCards.length = 0;
             $allFlipped.push(1);
@@ -100,8 +100,6 @@ MatchGame.flipCard = function($card, $game) {
                 $('.noclick').remove();
             }, 350);
          } else {
-          $('#game').append('<div class="noclick"></div>');
-          $('div.noclick').css('height', $('#game').css('height'));
 			    $card2.waitForImages(function() {
 					setTimeout(function() {
 					$card1.text('');
