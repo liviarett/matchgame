@@ -1,50 +1,3 @@
-// Indicate that the user won when all pairs have been found
-/* Add a "Restart Game" button
-Add score or time
-Allow user to select from multiple board sizes
-Add sound effects
-Add flipping animations */
-
-$(document).ready(function() {
-    MatchGame.generateCardValues();
-    MatchGame.renderCards(cardValues, $('#game'));
-
-// CLICK FUNCTIONS
-
-    $('.playagain').click(function() {
-		$allFlipped = [];
-    MatchGame.generateCardValues();
-    MatchGame.renderCards(cardValues, $('#game')); 
-    $('.playagain').css('visibility', 'hidden');
-        clicks = 0;
-        $('.score').text('Score: ' + clicks)
-        if ($(window).width() <= 750){	
-    $('.playagain').css('display', 'none');
-    $('.playvideo').css('display', 'none');	}
-    });
-
-    $('.playvideo').click(function() {
-        if ($(window).width() <= 900){
-     window.open("https://www.youtube.com/embed/LQJyBnJzCEw?autoplay=1","_blank")
-    } else {
-    $('iframe').fadeIn(500);
-    $('.closevideo').fadeIn(500);
-    $('.whitescreen').fadeIn(500);
-    $('.closevideo').css('display', 'flex');
-    $('.whitescreen').css('display', 'flex')    
-    $('iframe').attr('src', 'https://www.youtube.com/embed/LQJyBnJzCEw?autoplay=1');    
-    }
-    });
-    
-    $('.closevideo').click(function() {
-    $('iframe').attr('src', $('iframe').attr('src'));        
-    $('iframe').css('display', 'none');
-    $('.closevideo').css('display', 'none');
-    $('.whitescreen').css('display', 'none');
-    $('iframe').attr('src', 'https://www.youtube.com/embed/LQJyBnJzCEw?autoplay=0');    
-    });
-    });
-
 var MatchGame = {};
 var cardValues = [];
 var $allFlipped = [];
@@ -62,19 +15,19 @@ var clicks = 0;
 MatchGame.generateCardValues = function () {
     cardValues = [];
     var orderedValues = [];
-    
+
     for (var i = 1; i < 9; i++) {
         orderedValues.push(i);
         orderedValues.push(i);
     }
-    
+
     while (orderedValues.length > 0) {
         var randomIndex = Math.floor(Math.random() * orderedValues.length);
        cardValues.push(orderedValues[randomIndex]);
         orderedValues.splice(randomIndex, 1);
     }
      return cardValues;
-    
+
 };
 
 /*
@@ -84,13 +37,13 @@ MatchGame.generateCardValues = function () {
 
 MatchGame.renderCards = function(cardValues, $game) {
     var cardColours = [
-        'hsl(25, 85%, 65%)', 
-        'hsl(55, 85%, 65%)', 
-        'hsl(90, 85%, 65%)', 
-        'hsl(160, 85%, 65%)', 
-        'hsl(220, 85%, 65%)', 
-        'hsl(265, 85%, 65%)', 
-        'hsl(310, 85%, 65%)', 
+        'hsl(25, 85%, 65%)',
+        'hsl(55, 85%, 65%)',
+        'hsl(90, 85%, 65%)',
+        'hsl(160, 85%, 65%)',
+        'hsl(220, 85%, 65%)',
+        'hsl(265, 85%, 65%)',
+        'hsl(310, 85%, 65%)',
         'hsl(360, 85%, 65%)'];
 
     $game.empty();
@@ -105,7 +58,7 @@ MatchGame.renderCards = function(cardValues, $game) {
         $card.css('background-position', Math.floor(Math.random() * (600 - 10 + 1) + 10) + 'px');
         $game.append($card);
     };
-    
+
     $('.card').on('click',function() {
      MatchGame.flipCard($(this),$('#game'))
     });
@@ -116,13 +69,13 @@ MatchGame.renderCards = function(cardValues, $game) {
  */
 
 MatchGame.flipCard = function($card, $game) {
-   
+
     var $flippedCards = $game.data('flippedCards');
-        
+
     if ($card.data('flipped')) {
-        
+
         return;
-        
+
     } else {
         //if card not flipped, flip
         $card.data('flipped', true);
@@ -148,13 +101,13 @@ MatchGame.flipCard = function($card, $game) {
         //$card.text($card.data('value'));
         $flippedCards.push($card);
     };
-        
+
     if ($flippedCards.length === 2) {
         clicks = clicks + 1;
 		console.log(`clicks: ${clicks}`);
 		console.log(`flipped: ${$allFlipped}`);
 		console.log(`flipped length: ${$allFlipped.length}`);
-        $('.score').text('Score: ' + clicks); 
+        $('.score').text('Score: ' + clicks);
         var $card1 = $flippedCards[0];
         var $card2 = $flippedCards[1];
         if ($card1.data('value') === $card2.data('value')) {
@@ -166,8 +119,8 @@ MatchGame.flipCard = function($card, $game) {
             setTimeout(function() {
                 $('.noclick').remove();
             }, 350);
-         } else { 
-            $('#game').append('<div class="noclick"></div>'); 
+         } else {
+            $('#game').append('<div class="noclick"></div>');
 				$card2.waitForImages(function() {
 					setTimeout(function() {
 					$card1.text('');
@@ -183,11 +136,11 @@ MatchGame.flipCard = function($card, $game) {
 					}, 600);
 				});
     }
-    } else { 
+    } else {
         return;
     };
-    
-    
+
+
     if ($allFlipped.length === 7) {
         $('.playagain').css('visibility', 'visible');
         $('.playvideo').css('visibility', 'visible');
@@ -197,4 +150,3 @@ MatchGame.flipCard = function($card, $game) {
             return;
         };
     };
-    

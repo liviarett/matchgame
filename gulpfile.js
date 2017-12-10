@@ -11,19 +11,18 @@ var gulp = require('gulp'),
 
 var browserSync = require('browser-sync').create();
 
-// Compile LESS to CSS
 
-// Watch all LESS files, then run build-less
 gulp.task('watch', function() {
-  gulp.watch('../style.less', ['build-less'])
-})
-
-// Default will run the 'entry' task
+  gulp.watch('resources/*/*', ['serve'])
+});
 
 gulp.task('serve', function() {
-    browserSync.init({
-        server: {
-            baseDir: "./"
-        }
-    });
+
+  browserSync.init({
+    server: {
+        baseDir: "./"
+    }
+  });
+
+  gulp.watch(['resources/*/*']);
 });
